@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>Slim 3</title>
+        <link href='//fonts.googleapis.com/css?family=Lato:300' rel='stylesheet' type='text/css'>
+        <style>
+            body {
+                margin: 50px 0 0 0;
+                padding: 0;
+                width: 100%;
+                font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+                text-align: center;
+                color: #aaa;
+                font-size: 18px;
+            }
+
+            h1 {
+                color: #719e40;
+                letter-spacing: -3px;
+                font-family: 'Lato', sans-serif;
+                font-size: 100px;
+                font-weight: 200;
+                margin-bottom: 0;
+            }
+
+            input {
+                display: block;
+                margin: 0 auto;
+                border-color: #719e40;
+                border-style: solid;
+                border-radius: 6px;
+                margin-top: 8px;
+                width: 20vh;
+                height: 3vh;
+            }
+
+            input[type="submit"] {
+                background-color: #719e40;
+                color: white;
+                font-size: 1.3em;
+                padding: 4px;
+                border-radius: 6px;
+                margin-top: 8px;
+                width: 20vh;
+                height: 5vh;
+                cursor: pointer;
+            }
+
+            div {
+                display: block;
+                margin: 0 auto;
+                margin-top: 4px;
+                width: 35vh;
+                border-style: solid;
+                border-radius: 6px;
+                border-width: 2px;
+                font-size: .75em;
+                text-align: center;
+                padding: 4px 0;
+                font-weight: bold;
+            }
+
+            div.error {
+                color: #cc2020;
+                background-color: #db3434bb;
+                border-color: #cc2020bb;
+            }
+
+            div.message {
+                color: #edb602;
+                background-color: #edd353bb;
+                border-color: #f1cd1cbb;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Add your email</h1>
+        <form action="/add" method="POST">
+            <input type="text" required name="first_name" maxlength="255" placeholder="First Name">
+            <input type="text" required name="last_name" maxlength="255" placeholder="Last Name">
+            <input type="text" required name="email" maxlength="320" placeholder="Email">
+            <input type="submit" value="Submit">
+            <div class="error" style="display:none;">
+                <p>{{ error }}</p>
+            </div>
+            <div class="message" style="display:none;">
+                <p>{{ message }}</p>
+            </div>
+            <script>
+                var error = '{{ error }}';
+                var message = '{{ message }}';
+                if (error) {
+                    document.querySelector('.error').style.display = 'block';
+                }
+                if (message) {
+                    document.querySelector('.message').style.display = 'block';
+                }
+            </script>
+        </form>
+    </body>
+</html>
